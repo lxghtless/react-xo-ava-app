@@ -3,7 +3,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ### Changes to Create React App
 
 - Support [xo](https://github.com/xojs/xo) styling.
-- [Avajs][https://github.com/avajs/ava] testing with [Enzyme](https://github.com/airbnb/enzyme) and [Enzyme React Adapter](https://www.npmjs.com/package/enzyme-adapter-react-16)
+- [Avajs](https://github.com/avajs/ava) testing with [Enzyme](https://github.com/airbnb/enzyme) and [Enzyme React Adapter](https://www.npmjs.com/package/enzyme-adapter-react-16)
 - Code coverage with [nyc](https://github.com/istanbuljs/nyc)
 
 <br>
