@@ -1,0 +1,15 @@
+{
+  "short_name": "React XO AVA App",
+  "name": "Create React XO AVA App Sample",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#A2A2A7",
+  "background_color": "#292B30"
+}
