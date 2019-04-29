@@ -13,7 +13,7 @@ import Contact from './Contact';
 import './styles.styl';
 
 /*
-	Routing Design
+	Routing Design and Descriptions
 
 	Home:    / (a page for featured content, social media links, etc)
 	Contact: /contact (a page containing contact info)
