@@ -12,9 +12,13 @@ process.on('unhandledRejection', err => {
 });
 
 // Ensure environment variables are read.
+// eslint-disable-next-line import/no-unassigned-import
 require('../config/env');
 
 const fs = require('fs');
+// We require that you explicitly set browsers and do not fall back to
+// browserslist defaults.
+const {checkBrowsers} = require('react-dev-utils/browsersHelper');
 const chalk = require('react-dev-utils/chalk');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
@@ -36,7 +40,7 @@ const isInteractive = process.stdout.isTTY;
 
 // Warn and crash if required files are missing
 if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
-	process.exit(1);
+	throw new Error('required files are missing');
 }
 
 // Tools like Cloud9 rely on this.
@@ -60,10 +64,6 @@ if (process.env.HOST) {
 	console.log();
 }
 
-// We require that you explicitly set browsers and do not fall back to
-// browserslist defaults.
-const {checkBrowsers} = require('react-dev-utils/browsersHelper');
-
 checkBrowsers(paths.appPath, isInteractive)
 	.then(() => {
 		// We attempt to use the default port but if it is busy, we offer the user to
@@ -71,7 +71,7 @@ checkBrowsers(paths.appPath, isInteractive)
 		return choosePort(HOST, DEFAULT_PORT);
 	})
 	.then(port => {
-		if (port == null) {
+		if (!port) {
 			// We have not found a port.
 			return;
 		}
@@ -140,9 +140,9 @@ checkBrowsers(paths.appPath, isInteractive)
 		});
 	})
 	.catch(error => {
-		if (err && err.message) {
-			console.log(err.message);
+		if (error && error.message) {
+			console.log(error.message);
 		}
 
-		process.exit(1);
+		throw (error);
 	});

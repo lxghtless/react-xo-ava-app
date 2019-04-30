@@ -1,12 +1,15 @@
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+[![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/xojs/xo)
 
 ### Changes to Create React App
 
-- Support [xo](https://github.com/xojs/xo) styling.
+- Lint with [xo](https://github.com/xojs/xo) 
 - [Avajs](https://github.com/avajs/ava) testing with [Enzyme](https://github.com/airbnb/enzyme) and [Enzyme React Adapter](https://www.npmjs.com/package/enzyme-adapter-react-16)
 - Code coverage with [nyc](https://github.com/istanbuljs/nyc)
-
-<br>
+- [Stylus](http://stylus-lang.com/) CSS support
+- Run in [Docker](https://www.docker.com/) with [OpenResty](https://openresty.org/en/)
 
 ## Available Scripts
 
@@ -51,8 +54,6 @@ For troubleshooting in the container, first change the docker file's `FROM` to b
 
 `FROM openresty/openresty:centos`
 
-<br>
 then
-<br>
 
 `run --name react-xo-ava-app -p 8080:80 --rm -i -t react-xo-ava-app bash`

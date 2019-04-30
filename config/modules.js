@@ -1,21 +1,14 @@
-'use strict';
-
 const fs = require('fs');
 const path = require('path');
 const chalk = require('react-dev-utils/chalk');
 const paths = require('./paths');
 
-/**
- * Get the baseUrl of a compilerOptions object.
- *
- * @param {Object} options
- */
 function getAdditionalModulePaths(options = {}) {
 	const {baseUrl} = options;
 
 	// We need to explicitly check for null and undefined (and not a falsy value) because
 	// TypeScript treats an empty string as `.`.
-	if (baseUrl == null) {
+	if (!baseUrl) {
 		// If there's no baseUrl set we respect NODE_PATH
 		// Note that NODE_PATH is deprecated and will be removed
 		// in the next major release of create-react-app.

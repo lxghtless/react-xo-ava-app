@@ -6,6 +6,6 @@ babelRegister({
 	ignore: ['node_modules/*', 'test/*']
 });
 
-Enzyme.configure({ 
-	adapter: new EnzymeReactAdapter() 
+Enzyme.configure({
+	adapter: new EnzymeReactAdapter()
 });

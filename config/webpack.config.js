@@ -1,5 +1,3 @@
-'use strict';
-
 const fs = require('fs');
 const path = require('path');
 const isWsl = require('is-wsl');
@@ -45,10 +43,10 @@ const cssModuleRegex = /\.module\.css$/;
 // Const sassRegex = /\.(scss|sass)$/;
 // const sassModuleRegex = /\.module\.(scss|sass)$/;
 const stylRegex = /\.styl$/;
-const stylModuleRegex = /\.module.styl$/;
 
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
+// eslint-disable-next-line complexity
 module.exports = function (webpackEnv) {
 	const isEnvDevelopment = webpackEnv === 'development';
 	const isEnvProduction = webpackEnv === 'production';
@@ -165,7 +163,7 @@ module.exports = function (webpackEnv) {
 			filename: isEnvProduction ?
 				'static/js/[name].[contenthash:8].js' :
 				isEnvDevelopment && 'static/js/bundle.js',
-			// TODO: remove this when upgrading to webpack 5
+			// NOTE: remove this when upgrading to webpack 5
 			futureEmitAssets: true,
 			// There are also additional JS chunk files if you use code splitting.
 			chunkFilename: isEnvProduction ?
@@ -219,6 +217,7 @@ module.exports = function (webpackEnv) {
 							comments: false,
 							// Turned on because emoji and regex is not minified properly using default
 							// https://github.com/facebook/create-react-app/issues/2488
+							// eslint-disable-next-line camelcase
 							ascii_only: true
 						}
 					},
@@ -534,8 +533,8 @@ module.exports = function (webpackEnv) {
 			// Inlines the webpack runtime script. This script is too small to warrant
 			// a network request.
 			isEnvProduction &&
-        shouldInlineRuntimeChunk &&
-        new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime~.+[.]js/]),
+				shouldInlineRuntimeChunk &&
+				new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime~.+[.]js/]),
 			// Makes some environment variables available in index.html.
 			// The public URL is available as %PUBLIC_URL% in index.html, e.g.:
 			// <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
@@ -562,12 +561,11 @@ module.exports = function (webpackEnv) {
 			// to restart the development server for Webpack to discover it. This plugin
 			// makes the discovery automatic so you don't have to restart.
 			// See https://github.com/facebook/create-react-app/issues/186
+			/* eslint-disable no-mixed-spaces-and-tabs */
 			isEnvDevelopment &&
         new WatchMissingNodeModulesPlugin(paths.appNodeModules),
 			isEnvProduction &&
         new MiniCssExtractPlugin({
-        	// Options similar to the same options in webpackOptions.output
-        	// both options are optional
         	filename: 'static/css/[name].[contenthash:8].css',
         	chunkFilename: 'static/css/[name].[contenthash:8].chunk.css'
         }),
@@ -631,6 +629,7 @@ module.exports = function (webpackEnv) {
         	silent: true,
         	// The formatter is invoked directly in WebpackDevServerUtils during development
         	formatter: isEnvProduction ? typescriptFormatter : undefined
+        	/* eslint-enable no-mixed-spaces-and-tabs */
         })
 		].filter(Boolean),
 		// Some libraries import Node modules but don't use them in the browser.
@@ -643,6 +642,7 @@ module.exports = function (webpackEnv) {
 			http2: 'empty',
 			net: 'empty',
 			tls: 'empty',
+			// eslint-disable-next-line camelcase
 			child_process: 'empty'
 		},
 		// Turn off performance processing because we utilize
