@@ -1,6 +1,9 @@
 primary-color = #A2A2A7
 link-color = #0A84FF
 bg = #292B30
+nav-bg = #1C1E23
+link-color = #0A84FF
+border-color = #69696E
 
 @font-face
    font-family SCP
@@ -28,3 +31,75 @@ a
 .page
 	margin-top: 5%
 	display: flex
+
+.navbar
+	min-height: 50px
+	background-color: bg
+	display: flex
+	flex-direction: row-reverse
+	justify-content: space-evenly
+	align-items: center
+	border-bottom: 1px solid border-color
+
+.navbar ul
+	list-style-type: none
+
+.navbar a:link
+	text-decoration: none
+
+.navbar a:visited
+	text-decoration: none
+	
+.navbar a:hover
+	text-shadow: 1px 1px 2px primary-color
+	text-decoration: none
+	
+.navbar a:active
+	text-decoration: none
+
+.main-nav
+	width: 100%
+	display: flex
+	flex-direction: row
+	justify-content: space-around
+	align-items: center
+	
+.navbar-brand
+	display: none
+	text-shadow: 1px 1px 2px link-color
+	cursor: pointer
+	color: #32D74B
+	padding-right: 16px
+
+.navbar-brand:hover
+	text-shadow: 1px 1px 2px primary-color
+	
+.nav-links
+	display: flex
+
+@media only screen and (max-width: 768px)
+
+	.navbar
+		flex-direction: row
+		justify-content: flex-end
+		align-items: flex-start
+		
+	.main-nav
+		display: none
+		
+	.navbar-brand
+		display: flex
+		padding-top: 16px;
+		
+	.nav-links
+		padding-right: 0
+		justify-content: center
+		min-height: 35px
+
+	.main-nav-active
+		flex-direction: column
+		display: block
+		
+	.navbar-active
+		flex-direction: row-reverse
+		

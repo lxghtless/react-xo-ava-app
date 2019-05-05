@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
-// eslint-disable-next-line import/no-unassigned-import
-import './styles.styl';
-
 class NavBar extends Component {
 	constructor(props) {
 		super(props);
